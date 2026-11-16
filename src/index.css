@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Proxima Nova", "proxima-nova", "Montserrat", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Proxima Nova", "proxima-nova", "Montserrat", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Global +2px typographic scale uplift */
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.35rem;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5rem;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.65rem;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.85rem;
+  --text-2xl: 1.625rem;
+  --text-2xl--line-height: 2.1rem;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 2.4rem;
+  --text-4xl: 2.375rem;
+  --text-4xl--line-height: 2.75rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: auto;
+    background-color: #F7F7F8;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .ka-container {
+    width: 92%;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 768px) {
+    .ka-container {
+      width: 84%;
+    }
+  }
+
+  .ka-oak-btn {
+    background-image: linear-gradient(135deg, #A67549 0%, #8B5D36 52%, #734926 100%);
+    color: #ffffff;
+    border: 1px solid #734926;
+    box-shadow: inset 0 1px 0 rgba(230, 190, 148, 0.35), 0 6px 16px rgba(115, 73, 38, 0.22);
+    transition: background-image 160ms ease, filter 160ms ease, transform 150ms ease, box-shadow 160ms ease;
+  }
+
+  .ka-oak-btn:hover:not(:disabled) {
+    background-image: linear-gradient(135deg, #95673E 0%, #7B512E 52%, #633E1F 100%);
+    box-shadow: inset 0 1px 0 rgba(230, 190, 148, 0.42), 0 8px 20px rgba(115, 73, 38, 0.28);
+  }
+
+  .ka-oak-btn:active:not(:disabled) {
+    transform: scale(0.99);
+  }
+}
+
+.ka-surface {
+  background-color: #ffffff;
+  border: 1px solid #f0f1f3;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.05);
+}
+
+@keyframes ka-page-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ka-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.988);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ka-scale-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.ka-page-transition {
+  animation: ka-page-enter 160ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+.ka-appear {
+  animation: ka-fade-up 340ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+.ka-scale-appear {
+  animation: ka-scale-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
+}
+
+.ka-reveal {
+  transition: opacity 420ms cubic-bezier(0.16, 1, 0.3, 1), transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ka-reveal-hidden {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+}
+
+.ka-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.ka-lazy-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+}
+
+@keyframes ka-badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 28px rgba(115, 73, 38, 0.25), 0 0 0 0 rgba(166, 117, 73, 0.42);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 16px 36px rgba(115, 73, 38, 0.34), 0 0 0 14px rgba(166, 117, 73, 0);
+  }
+}
+
+.ka-badge-pulse {
+  animation: ka-badge-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, box-shadow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ka-page-transition,
+  .ka-appear,
+  .ka-scale-appear,
+  .ka-badge-pulse {
+    animation: none !important;
+    will-change: auto;
+  }
+  .ka-reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}

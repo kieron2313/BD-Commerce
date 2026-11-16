@@ -1,0 +1,1289 @@
+# MASTER PROJECT PROMPT
+## Modern Dual-Mode eCommerce & Product Catalogue Platform
+
+### 1. Project Vision
+
+Develop a complete, modern, scalable, SEO-friendly web application that can operate in two distinct modes:
+
+1. **eCommerce Mode:** A fully functional online store where customers can browse products, select variations, add products to their cart, apply discount coupons, select shipping methods, and place orders using Cash on Delivery.
+
+2. **Product Catalogue Mode:** A product presentation platform where customers can browse products, select variations, add products to an inquiry cart, and submit requests for quotations instead of placing orders.
+
+The platform must be managed through one centralized administration dashboard and use a shared product catalogue and database.
+
+The administrator must be able to switch between the two modes through a global platform setting without affecting existing products, customers, orders, inquiries, quotations, or historical records.
+
+The application must have a premium, modern design, excellent user experience, responsive layouts, high performance, and strong technical SEO foundations.
+
+This must be a fully functional application, not just a visual prototype.
+
+---
+
+# 2. Technology & Application Architecture
+
+Use a modern, scalable architecture.
+
+Recommended technology stack:
+
+- Frontend: Next.js / React.
+- Backend: Next.js API or Node.js.
+- Database: PostgreSQL.
+- ORM: Prisma or equivalent.
+- Styling: Tailwind CSS.
+- UI components: Modern reusable component library.
+- Authentication: Secure authentication system.
+- File storage: Cloud-based image and document storage.
+- SEO: Server-side rendering and static generation where appropriate.
+
+Requirements:
+
+- Modular and reusable architecture.
+- Responsive frontend.
+- Secure API endpoints.
+- Database persistence.
+- Role-based access control.
+- Separation of business logic and presentation.
+- Reusable components.
+- Scalable database architecture.
+- Easy integration of future payment providers and external services.
+
+Use the recommended stack unless the development environment requires a different approach.
+
+---
+
+# 3. Platform Operating Modes
+
+Create a global setting called **Platform Operating Mode**.
+
+Available options:
+
+- eCommerce Mode.
+- Product Catalogue / Inquiry Mode.
+
+The administrator can switch modes at any time.
+
+Both modes must use the same products, categories, variations, attributes, customers, and media library.
+
+## 3.1 eCommerce Mode
+
+Enable:
+
+- Product browsing.
+- Product variation selection.
+- Product pricing.
+- Shopping cart.
+- Coupon application.
+- Shipping method selection.
+- Checkout.
+- Guest checkout.
+- Customer information.
+- Cash on Delivery.
+- Order confirmation.
+- Order management.
+- Customer order history.
+
+## 3.2 Product Catalogue / Inquiry Mode
+
+Enable:
+
+- Product browsing.
+- Product variation selection.
+- Inquiry cart.
+- Quantity selection.
+- Customer inquiry form.
+- Inquiry submission.
+- Inquiry management.
+- Quotation creation.
+- Quotation communication.
+
+Disable standard checkout and payment functionality.
+
+The cart must become an inquiry cart.
+
+Customers should be able to add multiple products and different product variations to the same inquiry.
+
+The inquiry should contain:
+
+- Product name.
+- Product image.
+- Product SKU.
+- Selected variation.
+- Quantity.
+- Customer information.
+- Customer message.
+
+Allow customers to submit inquiries without creating an account.
+
+## 3.3 Independent Feature Settings
+
+In addition to the global operating mode, create individual settings for:
+
+- Show or hide product prices.
+- Show or hide sale prices.
+- Show or hide stock availability.
+- Show or hide SKUs.
+- Enable or disable product inquiries.
+- Enable or disable quantity selection.
+- Enable or disable quotation requests.
+
+These settings should be configurable globally, by category, and by individual product where applicable.
+
+The global operating mode must determine the primary workflow, while individual settings control optional functionality.
+
+---
+
+# 4. Product Management
+
+Create a comprehensive product management module.
+
+Every product should support:
+
+### General Information
+- Product name.
+- SKU.
+- Product slug.
+- Short description.
+- Full description.
+- Main product image.
+- Multiple gallery images.
+- Product category.
+- Multiple categories.
+- Brand.
+- Tags.
+- Product status.
+- Featured product.
+- New product badge.
+- Product specifications.
+- Related products.
+- Cross-sell products.
+- Upsell products.
+
+### Commercial Information
+- Regular price.
+- Sale price.
+- Sale start date.
+- Sale end date.
+- Cost price (admin only).
+- Tax class (configurable).
+- Stock quantity.
+- Stock status.
+- Backorder settings.
+- Minimum order quantity.
+- Maximum order quantity.
+- Product weight.
+- Product dimensions.
+
+### SEO Information
+- SEO title.
+- Meta description.
+- Custom URL slug.
+- Canonical URL.
+- Image alt text.
+
+### Product Types
+
+Support:
+
+1. Simple products.
+2. Variable products.
+
+The product management interface should make it easy to create, edit, duplicate, archive, and delete products.
+
+---
+
+# 5. Advanced Product Variations
+
+This is a critical part of the platform.
+
+Implement a complete WooCommerce-style variation management system.
+
+Products must support multiple attributes and combinations.
+
+Examples:
+
+- Size: XS, S, M, L, XL.
+- Color: Black, White, Red, Blue.
+- Material: Cotton, Polyester, Leather.
+- Capacity: 500ml, 1L, 2L.
+
+## 5.1 Attribute Management
+
+Create a centralized attribute management system.
+
+Administrators can:
+
+- Create attributes.
+- Edit attributes.
+- Delete attributes.
+- Create attribute values.
+- Assign attributes to products.
+- Reuse attributes across products.
+- Configure whether attributes are used for variations or filtering.
+
+Examples:
+
+Color → Red, Blue, Black.
+
+Size → Small, Medium, Large.
+
+## 5.2 Variation Combinations
+
+Allow administrators to generate all possible combinations automatically.
+
+Example:
+
+Product: T-Shirt.
+
+Attributes:
+
+- Size: Small, Medium, Large.
+- Color: Red, Black, White.
+
+Automatically generate nine possible combinations.
+
+Allow administrators to:
+- Generate all combinations.
+- Select specific combinations.
+- Edit individual combinations.
+- Bulk-edit variations.
+- Disable individual combinations.
+
+## 5.3 Individual Variation Information
+
+Every variation must support:
+
+- Unique SKU.
+- Regular price.
+- Sale price.
+- Sale dates.
+- Stock quantity.
+- Stock status.
+- Variation image.
+- Gallery image (optional).
+- Weight.
+- Dimensions.
+- Availability.
+- Backorder status.
+
+Each variation must have independent inventory management.
+
+## 5.4 Frontend Variation Selection
+
+On the product detail page:
+
+- Display attribute selectors.
+- Use color swatches for color attributes.
+- Use buttons or dropdowns for sizes.
+- Disable unavailable combinations.
+- Update the product image when a variation changes.
+- Update price dynamically.
+- Update SKU dynamically.
+- Update stock availability.
+- Update sale information.
+- Display only valid combinations.
+
+The exact selected variation must be saved in the cart or inquiry.
+
+In Catalogue Mode, variations must continue to work even if prices are hidden.
+
+---
+
+# 6. Category Management
+
+Create a hierarchical category system.
+
+Features:
+
+- Unlimited parent categories.
+- Unlimited subcategories.
+- Category name.
+- Category description.
+- Category image.
+- Category icon.
+- Category slug.
+- SEO title.
+- SEO description.
+- Category status.
+- Sorting and ordering.
+
+Support multiple category assignments per product.
+
+Each category must have its own optimized landing page.
+
+Allow category-level settings for:
+
+- Price visibility.
+- Stock visibility.
+- Inquiry functionality.
+- Product display layout.
+
+---
+
+# 7. Brand Management
+
+Create an optional brand management module.
+
+Each brand should support:
+
+- Brand name.
+- Brand logo.
+- Description.
+- Brand slug.
+- SEO title.
+- SEO description.
+- Brand status.
+
+Allow filtering products by brand.
+
+Create dedicated SEO-friendly brand pages.
+
+---
+
+# 8. Shopping Cart & Inquiry Cart
+
+Implement a persistent cart system.
+
+The cart must support:
+
+- Product image.
+- Product name.
+- SKU.
+- Selected variation.
+- Quantity.
+- Remove item.
+- Update quantity.
+- Continue shopping.
+
+Every cart item must preserve the exact selected variation.
+
+## eCommerce Cart
+
+Display:
+
+- Subtotal.
+- Coupon discount.
+- Shipping cost.
+- Tax, where applicable.
+- Total amount.
+
+## Inquiry Cart
+
+Display:
+
+- Product image.
+- Product name.
+- SKU.
+- Selected variations.
+- Quantities.
+- Remove and update options.
+
+The inquiry cart should allow customers to add several different products and submit one consolidated inquiry.
+
+Persist carts between visits using appropriate secure session or browser storage mechanisms.
+
+---
+
+# 9. Coupon & Discount Management
+
+Create a complete coupon management system for eCommerce Mode.
+
+Support:
+
+- Fixed amount discounts.
+- Percentage discounts.
+- Coupon codes.
+- Start dates.
+- Expiration dates.
+- Minimum purchase amount.
+- Maximum discount.
+- Maximum usage.
+- Usage limit per customer.
+- Applicable products.
+- Applicable categories.
+- Excluded products.
+- Excluded categories.
+- Active/inactive status.
+- Free shipping coupons.
+
+Validate coupons on the backend.
+
+Display discounts and final totals clearly in the cart and checkout.
+
+Allow administrators to review coupon usage statistics.
+
+Coupons must not automatically affect inquiry submissions.
+
+---
+
+# 10. Shipping Management
+
+Create a flexible shipping management module.
+
+Administrators can create unlimited shipping methods.
+
+Examples:
+
+- Standard Shipping.
+- Express Shipping.
+- Local Delivery.
+- Free Shipping.
+- Store Pickup.
+
+Each shipping method supports:
+
+- Name.
+- Description.
+- Price.
+- Free shipping threshold.
+- Estimated delivery time.
+- Geographic availability.
+- Country restrictions.
+- Region restrictions.
+- Postal code restrictions.
+- Active/inactive status.
+
+Allow different shipping costs based on geographic zones.
+
+Customers should only see shipping methods available for their delivery address.
+
+In Catalogue Mode, shipping can optionally be collected as an inquiry preference.
+
+---
+
+# 11. Payment Management
+
+For the initial release, implement only:
+
+**Cash on Delivery (COD).**
+
+Requirements:
+
+- Enable/disable COD.
+- Display COD during checkout.
+- Save payment method with the order.
+- Initial payment status: Unpaid.
+- Allow administrators to update payment status.
+- Include payment information in order details.
+
+Design the payment architecture to support future integration with:
+
+- Stripe.
+- PayPal.
+- Bank Transfer.
+- Other payment gateways.
+
+Do not implement these additional gateways in the initial release.
+
+---
+
+# 12. Customer Management
+
+Create a customer management module.
+
+Customer fields:
+
+- First name.
+- Last name.
+- Email.
+- Phone.
+- Company name.
+- Billing address.
+- Shipping address.
+- City.
+- State/Region.
+- Postal code.
+- Country.
+- Customer notes.
+
+Support:
+
+- Guest checkout.
+- Customer registration.
+- Customer login.
+- Customer profiles.
+- Order history.
+- Inquiry history.
+- Quotation history.
+
+Allow administrators to search and filter customers.
+
+---
+
+# 13. Order Management
+
+Create a comprehensive order management system.
+
+Order statuses:
+
+- Pending.
+- Processing.
+- On Hold.
+- Shipped.
+- Completed.
+- Cancelled.
+- Refunded.
+
+Payment statuses:
+
+- Unpaid.
+- Paid.
+- Partially Paid.
+- Refunded.
+
+Administrators must be able to:
+
+- View orders.
+- Search orders.
+- Filter orders.
+- Edit order information.
+- Update statuses.
+- Update payment status.
+- Add internal notes.
+- Add customer notes.
+- Print orders.
+- Export orders to CSV.
+- View order history.
+
+Generate unique order reference numbers.
+
+Preserve product and variation information as it existed when the order was placed.
+
+---
+
+# 14. Inquiry Management
+
+Create a separate inquiry management module.
+
+Each inquiry should include:
+
+- Unique inquiry reference.
+- Customer details.
+- Company name.
+- Email.
+- Phone.
+- Customer message.
+- Selected products.
+- Selected variations.
+- SKUs.
+- Quantities.
+- Submission date.
+- Inquiry status.
+- Internal notes.
+
+Inquiry statuses:
+
+- New.
+- In Review.
+- Quoted.
+- Responded.
+- Converted.
+- Closed.
+
+Administrators must be able to:
+
+- View inquiries.
+- Search inquiries.
+- Filter inquiries.
+- View full inquiry details.
+- Update inquiry status.
+- Add internal notes.
+- Contact customers.
+- Export inquiries.
+- Create quotations.
+- Convert inquiries into orders.
+
+Send email notifications when new inquiries are submitted.
+
+---
+
+# 15. Quotation Management System
+
+Implement a complete quotation management module.
+
+This feature must connect directly with the inquiry system.
+
+## 15.1 Create Quotations
+
+Administrators must be able to create a quotation from an existing inquiry.
+
+The quotation editor should allow:
+
+- Adding products.
+- Removing products.
+- Editing quantities.
+- Selecting variations.
+- Setting individual product prices.
+- Applying discounts.
+- Adding shipping costs.
+- Adding taxes where applicable.
+- Adding additional fees.
+- Adding notes.
+- Setting quotation expiration dates.
+
+## 15.2 Quotation Calculations
+
+Automatically calculate:
+
+- Product subtotals.
+- Line discounts.
+- Overall discount.
+- Shipping.
+- Tax.
+- Grand total.
+
+Allow fixed and percentage discounts.
+
+## 15.3 Quotation Delivery
+
+Allow administrators to:
+
+- Generate a professional PDF quotation.
+- Email the quotation to the customer.
+- Resend quotations.
+- Update quotations.
+- Track quotation status.
+
+Quotation statuses:
+
+- Draft.
+- Sent.
+- Viewed (if tracking is implemented).
+- Accepted.
+- Rejected.
+- Expired.
+
+## 15.4 Customer Quotation Experience
+
+Provide customers with a secure quotation viewing page.
+
+Customers should be able to:
+
+- View quotation details.
+- View products and variations.
+- View quantities and pricing.
+- Accept or reject the quotation.
+- Submit comments.
+
+When a quotation is accepted, allow administrators to convert it into an order.
+
+Quotation acceptance must not automatically trigger payment because the initial payment method is Cash on Delivery.
+
+---
+
+# 16. Bulk Product Import & Export
+
+Create a complete product import/export module.
+
+Support CSV and Excel files.
+
+## 16.1 Import
+
+Administrators should be able to:
+
+- Upload CSV or XLSX files.
+- Download sample import templates.
+- Map spreadsheet columns to product fields.
+- Import simple products.
+- Import variable products.
+- Import variation attributes.
+- Import SKUs.
+- Import prices.
+- Import stock.
+- Import categories.
+- Import brands.
+- Import descriptions.
+- Import image URLs where supported.
+- Update existing products using SKU matching.
+
+## 16.2 Validation
+
+Before importing:
+
+- Validate required fields.
+- Detect duplicate SKUs.
+- Validate categories.
+- Validate variation combinations.
+- Detect invalid prices.
+- Display errors.
+- Show an import preview.
+
+Provide a detailed import report after completion.
+
+## 16.3 Export
+
+Allow administrators to export:
+
+- All products.
+- Selected products.
+- Products by category.
+- Products by brand.
+- Product variations.
+- Stock information.
+
+Include an option to export products in a format compatible with the import process.
+
+Also support bulk product editing where practical.
+
+---
+
+# 17. Administration Dashboard
+
+Create a modern, intuitive administration interface.
+
+## Dashboard Overview
+
+Display:
+
+- Total products.
+- Total categories.
+- Total customers.
+- Total orders.
+- Total inquiries.
+- Total quotations.
+- Pending orders.
+- New inquiries.
+- Low-stock products.
+- Sales statistics in eCommerce Mode.
+- Recent orders.
+- Recent inquiries.
+- Recent quotations.
+
+The dashboard should adapt to the current operating mode.
+
+## Administration Menu
+
+1. Dashboard.
+2. Products.
+3. Categories.
+4. Brands.
+5. Attributes.
+6. Product Variations.
+7. Inventory.
+8. Orders.
+9. Inquiries.
+10. Quotations.
+11. Customers.
+12. Coupons.
+13. Shipping.
+14. Import / Export.
+15. Media Library.
+16. SEO Management.
+17. Website Pages.
+18. Email Templates.
+19. Users & Roles.
+20. General Settings.
+
+## User Roles
+
+Implement role-based access control:
+
+- Super Administrator.
+- Administrator.
+- Manager.
+- Product Manager.
+- Order Manager.
+- Inquiry Manager.
+
+Allow permissions to be configured by module and action.
+
+---
+
+# 18. Frontend Design
+
+Create a premium, modern, professional design.
+
+Design principles:
+
+- Minimalist.
+- Clean.
+- Elegant.
+- Contemporary.
+- Mobile-first.
+- High-quality product presentation.
+- Clear navigation.
+- Generous whitespace.
+- Modern typography.
+- Subtle animations.
+- Consistent visual hierarchy.
+- Excellent accessibility.
+
+Avoid outdated templates, cluttered interfaces, and unnecessary visual elements.
+
+## Main Pages
+
+Create:
+
+- Homepage.
+- Shop / All Products.
+- Category pages.
+- Subcategory pages.
+- Brand pages.
+- Product details.
+- Search results.
+- Cart.
+- Checkout.
+- Inquiry submission.
+- Quotation viewing.
+- About Us.
+- Contact Us.
+- FAQ.
+- Privacy Policy.
+- Terms & Conditions.
+- Shipping & Returns.
+
+## Homepage
+
+Include:
+
+- Modern hero banner.
+- Featured categories.
+- Featured products.
+- New arrivals.
+- Promotional banners.
+- Brand showcase.
+- Why Choose Us section.
+- Testimonials (optional).
+- Newsletter subscription.
+- Footer with navigation and contact information.
+
+## Product Listing
+
+Include:
+
+- Responsive product grid.
+- Category navigation.
+- Filters.
+- Sorting.
+- Search.
+- Attribute filtering.
+- Brand filtering.
+- Price filtering when enabled.
+- Availability filtering.
+- Pagination or load more.
+
+## Product Details
+
+Include:
+
+- Image gallery.
+- Product name.
+- SKU.
+- Description.
+- Specifications.
+- Variation selectors.
+- Price visibility according to settings.
+- Stock availability.
+- Quantity selector.
+- Add to Cart / Add to Inquiry.
+- Related products.
+
+The main call-to-action must adapt automatically to the selected operating mode.
+
+---
+
+# 19. SEO & SEF URL Architecture
+
+SEO is a core requirement and must be implemented from the beginning.
+
+## Search Engine Friendly URLs
+
+Examples:
+
+/products/product-name
+
+/categories/category-name
+
+/categories/category-name/subcategory-name
+
+/brands/brand-name
+
+/pages/about-us
+
+/cart
+
+/checkout
+
+/inquiry
+
+/quotation/secure-reference
+
+Avoid unnecessary query parameters and automatically generated unreadable URLs.
+
+## SEO Features
+
+Implement:
+
+- Editable product slugs.
+- Editable category slugs.
+- Editable brand slugs.
+- Unique slug validation.
+- Automatic slug generation.
+- Custom meta titles.
+- Meta descriptions.
+- Canonical URLs.
+- XML sitemap.
+- Robots.txt.
+- Open Graph metadata.
+- Social sharing metadata.
+- Breadcrumb navigation.
+- Product structured data.
+- Offer structured data where applicable.
+- Organization structured data.
+- Breadcrumb structured data.
+- Image alt text.
+- Internal linking.
+- SEO-friendly pagination.
+- Custom 404 page.
+- 301 redirects when URLs change.
+
+Use server-side rendering or static generation for indexable content.
+
+Avoid duplicate indexed pages from sorting, filters, and product variations.
+
+Do not index private customer pages, carts, checkout pages, inquiry submissions, or secure quotation pages.
+
+Only expose accurate structured product and pricing information.
+
+Create an SEO settings section in the admin dashboard.
+
+---
+
+# 20. Search & Filtering
+
+Implement fast product search.
+
+Search fields:
+
+- Product name.
+- SKU.
+- Description.
+- Category.
+- Brand.
+- Attributes.
+
+Filters:
+
+- Category.
+- Brand.
+- Price.
+- Color.
+- Size.
+- Other attributes.
+- Availability.
+
+Filters should work together and update results efficiently.
+
+Ensure that filters do not create unnecessary duplicate indexable URLs.
+
+---
+
+# 21. Media Library
+
+Create a centralized media library.
+
+Features:
+
+- Upload images.
+- Upload multiple images.
+- Organize media.
+- Search media.
+- Assign images to products.
+- Assign images to categories.
+- Image alt text.
+- Image optimization.
+- Automatic thumbnail generation.
+- Responsive image formats.
+- Delete unused media.
+
+Support modern image formats such as WebP and AVIF where appropriate.
+
+---
+
+# 22. General Platform Settings
+
+Create a comprehensive settings area.
+
+## General Settings
+
+- Website name.
+- Logo.
+- Favicon.
+- Contact email.
+- Phone number.
+- Business address.
+- Default language.
+- Currency.
+- Time zone.
+- Social media links.
+
+## Commerce Settings
+
+- Operating mode.
+- Price visibility.
+- Stock visibility.
+- Guest checkout.
+- COD settings.
+- Shipping defaults.
+- Tax settings.
+- Inventory management.
+
+## Catalogue Settings
+
+- Inquiry cart.
+- Inquiry form fields.
+- Price visibility.
+- Stock visibility.
+- Quantity selection.
+- SKU visibility.
+- Inquiry confirmation message.
+- Quotation functionality.
+
+## Email Settings
+
+- Email sender name.
+- Sender address.
+- Email templates.
+- Administrator notifications.
+- Customer notifications.
+
+## SEO Settings
+
+- Default meta title.
+- Default meta description.
+- Sitemap configuration.
+- Robots settings.
+- Canonical settings.
+- Social sharing defaults.
+
+---
+
+# 23. Notifications
+
+Implement email notifications.
+
+### eCommerce
+
+- New order.
+- Order confirmation.
+- Order status update.
+- Payment status update.
+
+### Catalogue
+
+- New inquiry.
+- Inquiry confirmation.
+- Quotation created.
+- Quotation sent.
+- Quotation accepted or rejected.
+
+Allow administrators to customize email templates.
+
+---
+
+# 24. Security & Performance
+
+Implement:
+
+- Secure authentication.
+- Role-based access control.
+- Server-side validation.
+- SQL injection protection.
+- XSS protection.
+- CSRF protection where applicable.
+- Secure session handling.
+- Rate limiting.
+- Secure file uploads.
+- Image optimization.
+- Lazy loading.
+- Caching.
+- Database indexing.
+- Error logging.
+- Backup strategy.
+
+All business-critical calculations must be performed and validated server-side.
+
+Never trust prices, discounts, shipping fees, stock levels, or order totals received from the frontend.
+
+Protect customer information and secure inquiry and quotation access.
+
+---
+
+# 25. Database Architecture
+
+Design a normalized relational database.
+
+Include the following entities:
+
+- Users.
+- Roles.
+- Permissions.
+- Customers.
+- Products.
+- Product Images.
+- Categories.
+- Product Categories.
+- Brands.
+- Attributes.
+- Attribute Values.
+- Product Variations.
+- Variation Attribute Values.
+- Inventory.
+- Carts.
+- Cart Items.
+- Orders.
+- Order Items.
+- Coupons.
+- Coupon Usage.
+- Shipping Zones.
+- Shipping Methods.
+- Inquiries.
+- Inquiry Items.
+- Quotations.
+- Quotation Items.
+- Settings.
+- SEO Metadata.
+- URL Redirects.
+- Email Templates.
+- Notifications.
+- Media Library.
+
+Use foreign keys, appropriate indexes, constraints, and relationships.
+
+Preserve historical product, variation, pricing, and customer information in orders, inquiries, and quotations.
+
+Changing or deleting a product must not corrupt historical transaction records.
+
+---
+
+# 26. Critical Business Logic
+
+The following requirements are mandatory:
+
+1. Both modes must share one product database.
+2. Switching modes must not delete historical data.
+3. Variations must work in both modes.
+4. Every variation must support independent SKU and stock.
+5. Each variation can have its own price and image.
+6. Prices can be hidden globally, by category, or by product.
+7. The eCommerce checkout must initially support Cash on Delivery only.
+8. Catalogue Mode must use an inquiry cart instead of checkout.
+9. Administrators must be able to create quotations from inquiries.
+10. Quotations must be convertible into orders.
+11. Products must support bulk import and export.
+12. All important settings must be manageable through the admin dashboard.
+13. The frontend must be fully responsive.
+14. SEO must be implemented throughout the application.
+15. All features must be functional and connected to the database.
+16. Customer and administrator workflows must be tested.
+17. Product, variation, order, inquiry, and quotation history must be preserved.
+
+---
+
+# 27. Development Phases
+
+Build the application in the following order.
+
+### Phase 1 – Foundation
+- Project setup.
+- Database architecture.
+- Authentication.
+- Admin dashboard.
+- User roles.
+- Global platform settings.
+
+### Phase 2 – Product Catalogue
+- Products.
+- Categories.
+- Brands.
+- Attributes.
+- Variations.
+- Inventory.
+- Media library.
+
+### Phase 3 – Customer Frontend
+- Homepage.
+- Product listings.
+- Category pages.
+- Product details.
+- Search.
+- Filters.
+- Responsive design.
+
+### Phase 4 – eCommerce
+- Shopping cart.
+- Coupons.
+- Shipping.
+- COD.
+- Checkout.
+- Order management.
+
+### Phase 5 – Catalogue & Inquiry
+- Inquiry cart.
+- Inquiry forms.
+- Inquiry management.
+- Email notifications.
+
+### Phase 6 – Quotations
+- Quotation creation.
+- Quotation calculations.
+- PDF generation.
+- Email delivery.
+- Customer acceptance.
+- Conversion to orders.
+
+### Phase 7 – Import & Export
+- CSV import.
+- Excel import.
+- Column mapping.
+- Validation.
+- Bulk updates.
+- Product export.
+
+### Phase 8 – SEO
+- SEF URLs.
+- Metadata.
+- Sitemap.
+- Robots.txt.
+- Structured data.
+- Canonical URLs.
+- Redirect management.
+
+### Phase 9 – Testing & Optimization
+- Functional testing.
+- Security testing.
+- Mobile testing.
+- SEO testing.
+- Performance optimization.
+- Database optimization.
+- User experience testing.
+
+---
+
+# 28. Final Delivery Requirements
+
+Deliver a fully functional, production-oriented application.
+
+Do not build only a frontend prototype.
+
+Do not use fake functionality or placeholder buttons for essential features.
+
+All modules must be connected to real database operations.
+
+Implement complete workflows from product creation through customer purchase, inquiry, quotation, and order conversion.
+
+Prioritize:
+
+- Exceptional modern design.
+- Ease of administration.
+- Flexible product management.
+- Advanced product variations.
+- Reliable business logic.
+- Excellent SEO.
+- Scalability.
+- Security.
+- Performance.
+- Future extensibility.
+
+The final platform must function as a complete eCommerce store or a professional product catalogue and quotation platform, controlled through one centralized administration dashboard.
+
+Before considering development complete, test all major workflows in both operating modes and verify that all requirements work correctly.

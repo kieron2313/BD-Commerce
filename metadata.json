@@ -1,0 +1,8 @@
+{
+  "name": "Kanso Atelier — Dual-Mode eCommerce & Product Catalogue Platform",
+  "description": "Home and office furniture, ergonomic workspace seating, solid timber joinery, and architectural lighting platform operating seamlessly in eCommerce and B2B Product Catalogue & Quotation modes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
